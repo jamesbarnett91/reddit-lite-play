@@ -16,7 +16,9 @@
     @for(post <- postSummaries){
     <li>
       <div class="post">
-        <img src="@post.thumbnail" class="post-thumbnail"> </img>
+        @if(!"self".equals(post.thumbnail)){
+          <img src="@post.thumbnail" class="post-thumbnail"> </img>
+        }
         <div class="post-body">
           <div>
             <a class="post-title" href="@post.url">@post.title</a>
