@@ -1,11 +1,30 @@
+@import models.PostSummary
 
-@(subreddit: String)
+@(subreddit: String, postSummaries: List[PostSummary])
 <html>
  <head>
-
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link href='@controllers.routes.Assets.versioned("stylesheets/subreddit.css")' media="screen" rel="stylesheet" type="text/css" />
  </head>
   <body>
-  test
-  @subreddit
+
+  <div class="header">
+    <span class="subreddit-title">/r/@subreddit</span>
+  </div>
+
+  <ol>
+    @for(post <- postSummaries){
+    <li class="post">
+        <div>
+          <a class="post-title" href="#">@post.title</a>
+          <span class="post-domain">(@post.domain)</span>
+        </div>
+        <div class="post-info">
+          @post.score points by @post.author | <a href="#">@post.commentCount comments</a>
+        </div>
+    </li>
+    }
+  </ol>
+
   </body>
 </html>

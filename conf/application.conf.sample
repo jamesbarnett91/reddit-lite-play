@@ -1,4 +1,4 @@
-
+apiConnectionTimeoutMs = 30000
 
 ## Secret key
 # http://www.playframework.com/documentation/latest/ApplicationSecret
