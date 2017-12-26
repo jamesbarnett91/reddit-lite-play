@@ -19,11 +19,11 @@ public class SubredditController extends Controller {
     this.subredditService = subredditService;
   }
 
-  public Result view(String subreddit) throws ExecutionException, InterruptedException {
+  public Result view(String subreddit, Boolean showThumbs) throws ExecutionException, InterruptedException {
 
     List<PostSummary> posts = subredditService.getPosts(subreddit).toCompletableFuture().get();
 
-    return ok(postList.render(subreddit, posts));
+    return ok(postList.render(subreddit, posts, showThumbs));
   }
 
 }

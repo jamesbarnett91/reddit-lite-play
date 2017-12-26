@@ -1,6 +1,6 @@
 @import models.PostSummary
 
-@(subreddit: String, postSummaries: List[PostSummary])
+@(subreddit: String, postSummaries: List[PostSummary], showThumbs: Boolean)
 <html>
  <head>
    <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,13 +10,20 @@
 
   <div class="header">
     <span class="subreddit-title">/r/@subreddit</span>
+    <span class="header-links">
+      @if(showThumbs){
+        <a href='@controllers.routes.SubredditController.view(subreddit, false)'>hide thumbnails</a>
+      } else {
+        <a href='@controllers.routes.SubredditController.view(subreddit, true)'>show thumbnails</a>
+      }
+    </span>
   </div>
 
-  <ol class="post-list">
+  <ol class="post-list no-list-style">
     @for(post <- postSummaries){
     <li>
       <div class="post">
-        @if(!"self".equals(post.thumbnail)){
+        @if(showThumbs && !"self".equals(post.thumbnail)){
           <img src="@post.thumbnail" class="post-thumbnail"> </img>
         }
         <div class="post-body">

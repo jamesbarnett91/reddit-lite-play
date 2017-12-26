@@ -9,18 +9,33 @@ body {
 .header {
   background-color: #c0c0c0;
   font-size: 10pt;
-
+  display: table;
 }
 
 .subreddit-title {
   font-weight: bold;
   font-size: 15pt;
-  padding: 2pt 10pt;
+  padding: 4pt 10pt;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.header-links {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.header-links a {
+  color: #000000;
 }
 
 .post-list {
   display: table;
   border-spacing: 5pt;
+}
+
+.no-list-style {
   list-style-type: none;
   padding: 0;
   margin: 0;
