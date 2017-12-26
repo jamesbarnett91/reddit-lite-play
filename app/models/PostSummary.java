@@ -15,5 +15,6 @@ public class PostSummary {
   public Integer ups;
   @JsonProperty("num_comments")
   public Integer commentCount;
+  public String url;
 
 }
