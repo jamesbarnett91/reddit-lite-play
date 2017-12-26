@@ -1,9 +1,11 @@
 package controllers;
 
+import models.PostDetail;
 import models.PostSummary;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.SubredditService;
+import views.html.postDetail;
 import views.html.postList;
 
 import javax.inject.Inject;
@@ -24,6 +26,11 @@ public class SubredditController extends Controller {
     List<PostSummary> posts = subredditService.getPosts(subreddit).toCompletableFuture().get();
 
     return ok(postList.render(subreddit, posts, showThumbs));
+  }
+
+  public Result viewDetail(String subreddit, String postId) throws ExecutionException, InterruptedException {
+    PostDetail detail = subredditService.getPostDetail(subreddit, postId).toCompletableFuture().get();
+    return ok(postDetail.render(subreddit, detail));
   }
 
 }

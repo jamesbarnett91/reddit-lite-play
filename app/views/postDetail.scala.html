@@ -1,0 +1,27 @@
+@import models.Comment
+@import models.PostDetail
+
+@(subreddit: String, postDetail: PostDetail)
+
+@basePage{
+
+  @header(subreddit)(HtmlFormat.empty)
+
+  <div class="post-summary">
+    @postSummary(postDetail.postSummary)
+  </div>
+
+  @if(postDetail.postSummary.isSelfPost){
+    <div class="post-selftext">
+      @Html(postDetail.postSummary.getSelftextHtmlUnescaped)
+    </div>
+  }
+
+  <div class="comment-heading">@postDetail.postSummary.commentCount comments</div>
+  <div class="comments">
+    @for(comment <- postDetail.comments){
+      @commentDetail(comment)
+    }
+  </div>
+
+}

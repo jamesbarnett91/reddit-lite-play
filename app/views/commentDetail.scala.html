@@ -1,0 +1,21 @@
+@import models.Comment
+
+@(comment: Comment)
+
+  @if(comment.author == null) {
+    <div class="comment depth-@(comment.getCappedDepth-1)">
+      @* TODO *@
+      <a href="#">Load more comments...</a>
+    </div>
+  } else {
+
+  <div class="comment depth-@comment.getCappedDepth">
+    <div class="comment-details">@comment.author @if(comment.flairText != null){[@comment.flairText]} | @comment.score points</div>
+    <div class="comment-text">@Html(comment.getBodyHtmlUnescaped)</div>
+  </div>
+
+  @for(childComment <- comment.replies){
+    @views.html.commentDetail(childComment)
+  }
+
+}

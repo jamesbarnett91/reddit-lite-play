@@ -1,44 +1,29 @@
 @import models.PostSummary
 
 @(subreddit: String, postSummaries: List[PostSummary], showThumbs: Boolean)
-<html>
- <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link href='@controllers.routes.Assets.versioned("stylesheets/subreddit.css")' media="screen" rel="stylesheet" type="text/css" />
- </head>
-  <body>
 
-  <div class="header">
-    <span class="subreddit-title">/r/@subreddit</span>
-    <span class="header-links">
-      @if(showThumbs){
-        <a href='@controllers.routes.SubredditController.view(subreddit, false)'>hide thumbnails</a>
-      } else {
-        <a href='@controllers.routes.SubredditController.view(subreddit, true)'>show thumbnails</a>
-      }
-    </span>
-  </div>
+@basePage{
+
+  @header(subreddit){
+    @if(showThumbs){
+      <a href='@controllers.routes.SubredditController.view(subreddit, false)'>hide thumbnails</a>
+    } else {
+      <a href='@controllers.routes.SubredditController.view(subreddit, true)'>show thumbnails</a>
+    }
+  }
 
   <ol class="post-list no-list-style">
     @for(post <- postSummaries){
     <li>
       <div class="post">
-        @if(showThumbs && !"self".equals(post.thumbnail)){
-          <img src="@post.thumbnail" class="post-thumbnail"> </img>
+        @if(showThumbs && !post.isSelfPost){
+          <a class="post-title" href="@post.url">
+            <img src="@post.thumbnail" class="post-thumbnail"> </img>
+          </a>
         }
-        <div class="post-body">
-          <div>
-            <a class="post-title" href="@post.url">@post.title</a>
-            <span class="post-domain">(@post.domain)</span>
-          </div>
-          <div class="post-info">
-            <span class="nowrap">@post.score points by @post.author @post.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="#">@post.commentCount comments</a></span>
-          </div>
-        </div>
+        @postSummary(post)
       </div>
     </li>
     }
   </ol>
-
-  </body>
-</html>
+}
