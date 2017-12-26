@@ -7,5 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.11"
 
-libraryDependencies += cache
-libraryDependencies += javaWs
+libraryDependencies ++= Seq(
+  javaWs,
+  "com.github.marlonlom" % "timeago" % "3.0.1"
+)

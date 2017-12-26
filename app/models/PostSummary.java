@@ -2,6 +2,9 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.marlonlom.utilities.timeago.TimeAgo;
+
+import java.time.Instant;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PostSummary {
@@ -16,5 +19,12 @@ public class PostSummary {
   @JsonProperty("num_comments")
   public Integer commentCount;
   public String url;
+  @JsonProperty("created_utc")
+  public Instant createdDate;
+
+  public String getRelativePostCreatedDate() {
+    // TODO localisation
+    return TimeAgo.using(createdDate.toEpochMilli());
+  }
 
 }
