@@ -1,3 +1,7 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: Verdana, Geneva, sans-serif;
 }
@@ -14,9 +18,30 @@ body {
   padding: 2pt 10pt;
 }
 
+.post-list {
+  display: table;
+  border-spacing: 5pt;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .post {
   font-size: 10pt;
   color: #828282;
+  display: table-row;
+}
+
+.post-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.post-thumbnail {
+  display: table-cell;
+  vertical-align: top;
+  width: 100px;
+  height: auto;
 }
 
 .post-title {
@@ -30,4 +55,8 @@ body {
 
 .post-info {
   font-size: 7pt;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

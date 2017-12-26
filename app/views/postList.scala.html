@@ -12,16 +12,21 @@
     <span class="subreddit-title">/r/@subreddit</span>
   </div>
 
-  <ol>
+  <ol class="post-list">
     @for(post <- postSummaries){
-    <li class="post">
-        <div>
-          <a class="post-title" href="@post.url">@post.title</a>
-          <span class="post-domain">(@post.domain)</span>
+    <li>
+      <div class="post">
+        <img src="@post.thumbnail" class="post-thumbnail"> </img>
+        <div class="post-body">
+          <div>
+            <a class="post-title" href="@post.url">@post.title</a>
+            <span class="post-domain">(@post.domain)</span>
+          </div>
+          <div class="post-info">
+            <span class="nowrap">@post.score points by @post.author @post.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="#">@post.commentCount comments</a></span>
+          </div>
         </div>
-        <div class="post-info">
-          @post.score points by @post.author @post.getRelativePostCreatedDate | <a href="#">@post.commentCount comments</a>
-        </div>
+      </div>
     </li>
     }
   </ol>
