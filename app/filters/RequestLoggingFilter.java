@@ -12,6 +12,8 @@ import java.util.function.Function;
 
 public class RequestLoggingFilter extends Filter {
 
+  private static final Logger.ALogger LOGGER = Logger.of(RequestLoggingFilter.class);
+
   @Inject
   public RequestLoggingFilter(Materializer mat) {
     super(mat);
@@ -26,7 +28,7 @@ public class RequestLoggingFilter extends Filter {
 
       long requestTime = System.currentTimeMillis() - startTime;
 
-      Logger.info("{} {} {} took {}ms and returned {}", requestHeader.remoteAddress(), requestHeader.method(), requestHeader.uri(), requestTime, result.status());
+      LOGGER.info("{} forwarded-for {} {} {} took {}ms and returned {}", requestHeader.remoteAddress(), requestHeader.getHeader("X-Forwarded-For"), requestHeader.method(), requestHeader.uri(), requestTime, result.status());
 
       return result;
     });
