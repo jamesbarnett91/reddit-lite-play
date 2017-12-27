@@ -7,6 +7,10 @@ body {
   font-size: 10pt;
 }
 
+p {
+  margin: 5pt 0pt;
+}
+
 .header {
   background-color: #c0c0c0;
   display: table;
@@ -96,40 +100,29 @@ body {
   margin-bottom: 10pt;
 }
 
+.comment.child {
+  margin-left: 10pt;
+}
+
 .comment-details {
   font-size: 8pt;
   color: #828282;
-  margin-bottom: -10pt;
 }
 
-.depth-1 {
-  margin-left: 20pt;
+summary {
+  outline: none;
+  margin-bottom: -5pt;
 }
 
-.depth-2 {
-  margin-left: 40pt;
+blockquote {
+  background: #f9f9f9;
+  border-left: 5pt solid #ccc;
+  margin: 10pt 10pt 5pt;
+  padding: 2pt 10pt;
 }
 
-.depth-3 {
-  margin-left: 60pt;
-}
-
-.depth-4 {
-  margin-left: 80pt;
-}
-
-.depth-5 {
-  margin-left: 100pt;
-}
-
-.depth-6 {
-  margin-left: 120pt;
-}
-
-.depth-7 {
-  margin-left: 140pt;
-}
-
-.depth-8 {
-  margin-left: 160pt;
+pre {
+  background: #f9f9f9;
+  font-size: 8pt;
+  padding: 2pt 10pt;
 }

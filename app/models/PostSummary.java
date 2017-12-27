@@ -3,6 +3,7 @@ package models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.marlonlom.utilities.timeago.TimeAgo;
+import controllers.routes;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.time.Instant;
@@ -26,10 +27,24 @@ public class PostSummary {
   public Boolean isSelfPost;
   @JsonProperty("selftext_html")
   public String selftextHtml;
+  public String subreddit;
 
   public String getRelativePostCreatedDate() {
     // TODO localisation
     return TimeAgo.using(createdDate.toEpochMilli());
+  }
+
+  public String getPostUrlOrDetailLink() {
+    if(isSelfPost) {
+      return getDetailLink();
+    }
+    else {
+      return url;
+    }
+  }
+
+  public String getDetailLink(){
+    return routes.SubredditController.viewDetail(subreddit, id).url();
   }
 
   public String getSelftextHtmlUnescaped() {

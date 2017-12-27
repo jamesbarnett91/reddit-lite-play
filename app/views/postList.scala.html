@@ -16,8 +16,8 @@
     @for(post <- postSummaries){
     <li>
       <div class="post">
-        @if(showThumbs && !post.isSelfPost){
-          <a class="post-title" href="@post.url">
+        @if(showThumbs && !post.isSelfPost && post.thumbnail != ""){
+          <a class="post-title" href="@post.getPostUrlOrDetailLink">
             <img src="@post.thumbnail" class="post-thumbnail"> </img>
           </a>
         }

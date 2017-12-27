@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.marlonlom.utilities.timeago.TimeAgo;
 import org.apache.commons.lang3.StringEscapeUtils;
 import play.libs.Json;
 
@@ -47,13 +48,9 @@ public class Comment {
     return StringEscapeUtils.unescapeHtml4(bodyHtml);
   }
 
-  public int getCappedDepth() {
-    if(depth < 8) {
-      return depth;
-    }
-    else {
-      return 8;
-    }
+  public String getRelativeCreatedDate() {
+    // TODO localisation
+    return TimeAgo.using(createdDate.toEpochMilli());
   }
 
 }

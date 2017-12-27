@@ -4,10 +4,10 @@
 
 <div class="post-body">
   <div>
-    <a class="post-title" href="@postSummary.url">@postSummary.title</a>
+    <a class="post-title" href="@postSummary.getPostUrlOrDetailLink">@postSummary.title</a>
     <span class="post-domain">(@postSummary.domain)</span>
   </div>
   <div class="post-info">
-    <span class="nowrap">@postSummary.score points by @postSummary.author @postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="#">@postSummary.commentCount comments</a></span>
+    <span class="nowrap">@postSummary.score points by @postSummary.author @postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="@postSummary.getDetailLink">@postSummary.commentCount comments</a></span>
   </div>
 </div>
