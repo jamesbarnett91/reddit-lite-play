@@ -5,6 +5,7 @@ import models.PostSummary;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.SubredditService;
+import views.html.landingPage;
 import views.html.postDetail;
 import views.html.postList;
 
@@ -31,6 +32,10 @@ public class SubredditController extends Controller {
   public Result viewDetail(String subreddit, String postId) throws ExecutionException, InterruptedException {
     PostDetail detail = subredditService.getPostDetail(subreddit, postId).toCompletableFuture().get();
     return ok(postDetail.render(subreddit, detail));
+  }
+
+  public Result landingPage() {
+    return ok(landingPage.render());
   }
 
 }

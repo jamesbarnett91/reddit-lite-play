@@ -7,6 +7,7 @@ import controllers.routes;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PostSummary {
@@ -50,5 +51,14 @@ public class PostSummary {
 
   public String getSelftextHtmlUnescaped() {
     return StringEscapeUtils.unescapeHtml4(selftextHtml);
+  }
+
+  public Optional<String> getThumbnailUrl() {
+    if(thumbnail != null && thumbnail.startsWith("https://")) {
+      return Optional.of(thumbnail);
+    }
+    else {
+      return Optional.empty();
+    }
   }
 }

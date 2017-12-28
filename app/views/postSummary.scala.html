@@ -9,6 +9,9 @@
     <span class="post-domain">(@postSummary.domain)</span>
   </div>
   <div class="post-info">
-    <span class="nowrap">@ViewUtils.pluralise(postSummary.score, "point") by @postSummary.author @postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="@postSummary.getDetailLink">@ViewUtils.pluralise(postSummary.commentCount, "comment")</a></span>
+    <span class="nowrap">@ViewUtils.pluralise(postSummary.score, "point")</span>
+    <span class="nowrap">by @postSummary.author</span>
+    <span class="nowrap"> in <a class="subreddit-link" href="@controllers.routes.SubredditController.view(postSummary.subreddit)">/r/@postSummary.subreddit</a></span>
+    <span class="nowrap">@postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="@postSummary.getDetailLink">@ViewUtils.pluralise(postSummary.commentCount, "comment")</a></span>
   </div>
 </div>

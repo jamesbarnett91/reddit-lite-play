@@ -1,5 +1,7 @@
 # Match reddit.com routes
 
+GET /                                             controllers.SubredditController.landingPage
+
 GET /r/:subreddit                                 controllers.SubredditController.view(subreddit: String, after: String ?= null, showThumbs: Boolean ?= true)
 GET /r/:subreddit/comments/$postId<.+?(?=\/|\z)>  controllers.SubredditController.viewDetail(subreddit: String, postId: String)
 

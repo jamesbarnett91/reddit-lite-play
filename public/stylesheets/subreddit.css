@@ -24,6 +24,7 @@ p {
   vertical-align: middle;
   text-decoration: none;
   color: #000000;
+  white-space: nowrap;
 }
 
 .header-links {
@@ -89,6 +90,10 @@ p {
   padding: 10pt 5pt;
 }
 
+.subreddit-link {
+  color: #828282;
+}
+
 .post-selftext {
   padding: 0pt 15pt;
 }
@@ -131,4 +136,9 @@ pre {
   background: #f9f9f9;
   font-size: 8pt;
   padding: 2pt 10pt;
+}
+
+.landing-desc {
+  padding: 10pt 5pt;
+  font-size: 10pt;
 }

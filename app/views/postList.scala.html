@@ -16,9 +16,9 @@
     @for(post <- postList){
     <li>
       <div class="post">
-        @if(showThumbs && !post.isSelfPost && post.thumbnail != ""){
+        @if(showThumbs && !post.isSelfPost && post.getThumbnailUrl.isPresent){
           <a class="post-title" href="@post.getPostUrlOrDetailLink">
-            <img src="@post.thumbnail" class="post-thumbnail"> </img>
+            <img src="@post.getThumbnailUrl.get" class="post-thumbnail"> </img>
           </a>
         }
         @postSummary(post)
