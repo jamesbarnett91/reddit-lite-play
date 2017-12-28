@@ -33,8 +33,8 @@ public class SubredditService {
     this.apiConnectionTimeout = apiConnectionTimeout;
   }
 
-  public CompletionStage<List<PostSummary>> getPosts(String subreddit) {
-    return client.url(REDDIT_API_ROOT_URL + subreddit + "/.json")
+  public CompletionStage<List<PostSummary>> getPosts(String subreddit, String postsAfterId) {
+    return client.url(REDDIT_API_ROOT_URL + subreddit + "/.json" + (postsAfterId != null ? "?after=" + postsAfterId : ""))
       .setRequestTimeout(apiConnectionTimeout)
       .get()
       .handleAsync((r, t) -> handleResponse(r, t, (json) -> {

@@ -21,11 +21,11 @@ public class SubredditController extends Controller {
     this.subredditService = subredditService;
   }
 
-  public Result view(String subreddit, Boolean showThumbs) throws ExecutionException, InterruptedException {
+  public Result view(String subreddit, String postsAfterId, Boolean showThumbs) throws ExecutionException, InterruptedException {
 
-    List<PostSummary> posts = subredditService.getPosts(subreddit).toCompletableFuture().get();
+    List<PostSummary> posts = subredditService.getPosts(subreddit, postsAfterId).toCompletableFuture().get();
 
-    return ok(postList.render(subreddit, posts, showThumbs));
+    return ok(postList.render(subreddit, postsAfterId, posts, showThumbs));
   }
 
   public Result viewDetail(String subreddit, String postId) throws ExecutionException, InterruptedException {

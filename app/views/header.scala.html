@@ -1,7 +1,7 @@
 @(subreddit: String)(linkContent: Html)
 
 <div class="header">
-  <span class="subreddit-title">/r/@subreddit</span>
+  <a class="subreddit-title" href="@controllers.routes.SubredditController.view(subreddit)">/r/@subreddit</a>
   <span class="header-links">
     @linkContent
   </span>

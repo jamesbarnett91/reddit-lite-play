@@ -22,6 +22,8 @@ p {
   padding: 4pt 10pt;
   display: table-cell;
   vertical-align: middle;
+  text-decoration: none;
+  color: #000000;
 }
 
 .header-links {
@@ -77,6 +79,10 @@ p {
 
 .nowrap {
   white-space: nowrap;
+}
+
+.next-page-link {
+  padding: 10pt;
 }
 
 .post-summary {

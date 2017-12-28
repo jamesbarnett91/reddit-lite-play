@@ -1,19 +1,19 @@
 @import models.PostSummary
 
-@(subreddit: String, postSummaries: List[PostSummary], showThumbs: Boolean)
+@(subreddit: String, requestedPostStartId: String, postList: List[PostSummary], showThumbs: Boolean)
 
 @basePage{
 
   @header(subreddit){
     @if(showThumbs){
-      <a href='@controllers.routes.SubredditController.view(subreddit, false)'>hide thumbnails</a>
+      <a href='@controllers.routes.SubredditController.view(subreddit, requestedPostStartId, false)'>hide thumbnails</a>
     } else {
-      <a href='@controllers.routes.SubredditController.view(subreddit, true)'>show thumbnails</a>
+      <a href='@controllers.routes.SubredditController.view(subreddit, requestedPostStartId, true)'>show thumbnails</a>
     }
   }
 
   <ol class="post-list no-list-style">
-    @for(post <- postSummaries){
+    @for(post <- postList){
     <li>
       <div class="post">
         @if(showThumbs && !post.isSelfPost && post.thumbnail != ""){
@@ -26,4 +26,6 @@
     </li>
     }
   </ol>
+
+  <a class="next-page-link" href="@controllers.routes.SubredditController.view(subreddit, postList.last.name, showThumbs)">next page ></a>
 }

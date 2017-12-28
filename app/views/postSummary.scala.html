@@ -1,4 +1,5 @@
 @import models.PostSummary
+@import views.ViewUtils
 
 @(postSummary: PostSummary)
 
@@ -8,6 +9,6 @@
     <span class="post-domain">(@postSummary.domain)</span>
   </div>
   <div class="post-info">
-    <span class="nowrap">@postSummary.score points by @postSummary.author @postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="@postSummary.getDetailLink">@postSummary.commentCount comments</a></span>
+    <span class="nowrap">@ViewUtils.pluralise(postSummary.score, "point") by @postSummary.author @postSummary.getRelativePostCreatedDate</span> | <span class="nowrap"><a href="@postSummary.getDetailLink">@ViewUtils.pluralise(postSummary.commentCount, "comment")</a></span>
   </div>
 </div>

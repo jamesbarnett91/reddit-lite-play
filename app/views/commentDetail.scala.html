@@ -1,4 +1,5 @@
 @import models.Comment
+@import views.ViewUtils
 
 @(comment: Comment)
 
@@ -6,12 +7,12 @@
 
   @if(comment.author == null) {
     @* TODO load comments. probably a better way to check for this as well *@
-    <a href="#">Load more comments...</a>
+    <a href="#">TODO Load more comments...</a>
   } else {
 
     <details open>
       <summary>
-        <span class="comment-details">@comment.author @if(comment.flairText != null && comment.flairText != ""){[@comment.flairText]} | @comment.getRelativeCreatedDate | @comment.score points</span>
+        <span class="comment-details">@comment.author @if(comment.flairText != null && comment.flairText != ""){[@comment.flairText]} | @comment.getRelativeCreatedDate | @ViewUtils.pluralise(comment.score, "point")</span>
       </summary>
       <div class="comment-text">@Html(comment.getBodyHtmlUnescaped)</div>
 

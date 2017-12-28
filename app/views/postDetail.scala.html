@@ -1,5 +1,6 @@
 @import models.Comment
 @import models.PostDetail
+@import views.ViewUtils
 
 @(subreddit: String, postDetail: PostDetail)
 
@@ -17,7 +18,7 @@
     </div>
   }
 
-  <div class="comment-heading">@postDetail.postSummary.commentCount comments</div>
+  <div class="comment-heading">@ViewUtils.pluralise(postDetail.postSummary.commentCount, "comment")</div>
   <div class="comments">
     @for(comment <- postDetail.comments){
       @commentDetail(comment)

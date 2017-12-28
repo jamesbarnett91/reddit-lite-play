@@ -12,6 +12,7 @@ import java.time.Instant;
 public class PostSummary {
 
   public String id;
+  public String name;
   public String title;
   public String domain;
   public Integer score;
