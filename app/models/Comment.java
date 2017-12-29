@@ -28,7 +28,6 @@ public class Comment {
   public String bodyHtml;
   public Integer depth;
 
-  //gilded
 
   @JsonIgnore
   public List<Comment> replies = new ArrayList<>();
