@@ -2,7 +2,7 @@
 Demo [here](https://reddit.james-barnett.net)
 
 A lightweight, minimal, readonly Reddit client, designed for mobile devices or slow connections.
-![comments](https://james-barnett.net/files/reddit-lite/screenshots/rl3.png)
+![comments](https://jamesbarnett.io/files/reddit-lite/screenshots/rl3.png)
 
 ## Running locally
 Reddit-lite is written in [play](https://www.playframework.com/).
